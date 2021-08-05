@@ -4,6 +4,9 @@ from django.contrib import messages
 from django.urls import reverse
 
 # Create your views here.
+def test(request):
+    return HttpResponse("Hello, World")
+
 def render_login(request):
     return render(request, "auth_templates/login.html")
 
