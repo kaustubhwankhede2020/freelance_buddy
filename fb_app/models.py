@@ -7,6 +7,7 @@ class Customer(models.Model):
     last_name = models.CharField(max_length=20)
     age = models.CharField(max_length=4)
     email = models.EmailField()
+    gender = models.CharField(max_length=10, default="")
     mobile_no_1 = models.CharField(max_length=15)
     mobile_no_2 = models.CharField(max_length=15)
     mobile_no_3 = models.CharField(max_length=15)

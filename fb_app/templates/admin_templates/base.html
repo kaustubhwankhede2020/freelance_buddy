@@ -23,7 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
-    {% include 'admin_templates/navbar.html' %}
+        {% include 'admin_templates/navbar.html' %}
 
         <!-- Main Sidebar Container -->
         {% include 'admin_templates/sidebar.html' %}
@@ -33,6 +33,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Success!</strong> {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1 class="m-0">{% block page_title %}{% endblock %}</h1>
@@ -68,7 +78,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
         <!-- Modals -->
-        
+
         {% include 'admin_templates/modals.html' %}
 
 

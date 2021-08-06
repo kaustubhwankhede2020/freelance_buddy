@@ -27,6 +27,3 @@ def perform_login(request):
 def perform_logout(request):
     logout(request)
     return HttpResponseRedirect("/")
-
-def render_dashboard(request):
-    return HttpResponse("Admin Home")
