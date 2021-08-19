@@ -6,4 +6,5 @@ urlpatterns = [
     path("perform_login", views.perform_login, name="perform_login"),
     path("dashboard/", admin_views.render_dashboard, name="render_dashboard"),
     path("perform_add_customer", modal_views.perform_add_customer, name="perform_add_customer"),
+    path("perform_add_product", modal_views.perform_add_product, name="perform_add_product"),
 ]
