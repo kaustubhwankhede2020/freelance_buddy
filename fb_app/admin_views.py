@@ -10,3 +10,17 @@ def render_dashboard(request):
         "customers": customers,
     }
     return render(request, 'admin_templates/dashboard.html', context)
+
+def render_customers(request):
+    customers = models.Customer.objects.all()
+    context = {
+        "customers": customers,
+    }
+    return render(request, 'admin_templates/customers.html', context)
+
+def render_products(request):
+    products = models.Product.objects.all()
+    context = {
+        "products": products,
+    }
+    return render(request, 'admin_templates/products.html', context)

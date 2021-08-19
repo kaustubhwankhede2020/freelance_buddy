@@ -1,0 +1,53 @@
+{% extends "admin_templates/base.html" %}
+{% load static %}
+{% block title %}Products{% endblock %}
+{% block page_title %}Products{% endblock %}
+{% block breadcrumb %}Products{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Recent Products</h3>
+
+        <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0" style="height: 300px;">
+        <table class="table table-head-fixed text-nowrap">
+            <thead>
+                <!-- main_id,first_name,last_name,email,gender,age,mobile_no_1,mobile_no_2,mobile_no_3,city,state,country,address,profession,customer_source,description,additional_notes,bank_details,time_zone,created_at,updated_at -->
+                <tr>
+                    <th>ID</th>
+                    <th>Product Title</th>
+                    <th>Product Description</th>
+                    <th>Listing Unit Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- main_id,first_name,last_name,email,gender,age,mobile_no_1,mobile_no_2,mobile_no_3,city,state,country,address,profession,customer_source,description,additional_notes,bank_details,time_zone,created_at,updated_at -->
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.main_id  }}</td>
+                    <td>{{ product.product_title  }}</td>
+                    <td>{{ product.product_description  }}</td>
+                    <td>{{ product.listing_unit_price  }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+
+{% endblock content %}
