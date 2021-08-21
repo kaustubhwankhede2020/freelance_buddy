@@ -24,3 +24,6 @@ def render_products(request):
         "products": products,
     }
     return render(request, 'admin_templates/products.html', context)
+
+def render_calendar(request):
+    return render(request, 'admin_templates/calendar.html')

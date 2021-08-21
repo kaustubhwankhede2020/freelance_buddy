@@ -28,21 +28,21 @@
 
 # This code to create dummy data in the Products Table
 
-import pandas as pd
-import sqlite3
+# import pandas as pd
+# import sqlite3
 
-data = pd.read_csv("Product_data.csv")
-df = pd.DataFrame(data)
+# data = pd.read_csv("Product_data.csv")
+# df = pd.DataFrame(data)
 
 
 
-connect = sqlite3.connect("db.sqlite3")
-cursor = connect.cursor()
-for index, row in df.iterrows():
-    cursor.execute(f"""
-    INSERT INTO fb_app_product(product_title,product_description, listing_unit_price,created_at,updated_at) VALUES("{row['product_title']}", "{row['product_description']}", "{row['listing_unit_price']}", "{row['created_at']}", "{row['updated_at']}")
-    """)
-print("datainserted")
-connect.commit()
-connect.close()
+# connect = sqlite3.connect("db.sqlite3")
+# cursor = connect.cursor()
+# for index, row in df.iterrows():
+#     cursor.execute(f"""
+#     INSERT INTO fb_app_product(product_title,product_description, listing_unit_price,created_at,updated_at) VALUES("{row['product_title']}", "{row['product_description']}", "{row['listing_unit_price']}", "{row['created_at']}", "{row['updated_at']}")
+#     """)
+# print("datainserted")
+# connect.commit()
+# connect.close()
 
