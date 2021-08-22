@@ -2,8 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo"
-            class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Freelance Buddy</span>
     </a>
 
@@ -36,7 +35,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">Operations</li>
                 <li class="nav-item">
-                    <a href="{% url 'render_dashboard' %}" class="nav-link">
+                    {% url 'render_dashboard' as render_dashboard %}
+                    <a href="{{ render_dashboard }}" class="nav-link {% if request.path == render_dashboard %}active{% endif %}">
                         <i class="nav-icon fas fa-home"></i>
                         <p>Home</p>
                     </a>
@@ -73,13 +73,15 @@
                 </li>
                 <li class="nav-header">Manage Systems</li>
                 <li class="nav-item">
-                    <a href="{% url 'render_customers' %}" class="nav-link">
+                    {% url 'render_customers' as render_customers %}
+                    <a href="{{ render_customers }}" class="nav-link {% if request.path == render_customers %}active{% endif %}">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>Customers</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'render_products' %}" class="nav-link">
+                    {% url 'render_products' as render_products %}
+                    <a href="{{ render_products }}" class="nav-link {% if request.path == render_products %}active{% endif %}">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>Products</p>
                     </a>
