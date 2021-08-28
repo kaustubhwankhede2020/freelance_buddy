@@ -77,12 +77,12 @@
                     <div class="mb-3">
                         <label for="additional_notes" class="form-label">Additional Notes</label>
                         <textarea class="form-control" rows="3" id="additional_notes" name="additional_notes"
-                            required></textarea>
+                                  required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="bank_details" class="form-label">Bank Details</label>
                         <textarea class="form-control" rows="3" id="bank_details" name="bank_details"
-                            required></textarea>
+                                  required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="time_zone" class="form-label">Time Zone</label>
@@ -121,12 +121,12 @@
                     <div class="mb-3">
                         <label for="product_description" class="form-label">Product Description</label>
                         <textarea class="form-control" rows="3" id="product_description" name="product_description"
-                            required></textarea>
+                                  required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="listing_unit_price" class="form-label">Listing Unit Price</label>
                         <input type="number" class="form-control" id="listing_unit_price" name="listing_unit_price"
-                            required>
+                               required>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-right">
@@ -151,7 +151,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{% url 'perform_add_product' %}" method="POST">
+            <form action="{% url 'perform_add_session' %}" method="POST">
                 {% csrf_token %}
                 <div class="modal-body">
                     <div class="mb-3">
@@ -161,7 +161,7 @@
                     <div class="mb-3">
                         <label for="session_description" class="form-label">Session Description</label>
                         <textarea class="form-control" rows="3" id="session_description" name="session_description"
-                            required></textarea>
+                                  required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="date" class="form-label">Date</label>
@@ -174,21 +174,96 @@
                     <div class="mb-3">
                         <label for="location" class="form-label">Location</label>
                         <textarea class="form-control" rows="3" id="location" name="location"
-                            required></textarea>
+                                  required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="notes" class="form-label">Notes</label>
                         <textarea class="form-control" rows="3" id="notes" name="notes"
-                            required></textarea>
+                                  required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="duration" class="form-label">Duration</label>
                         <textarea class="form-control" rows="3" id="duration" name="duration"
-                            required></textarea>
+                                  required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="repeat" class="form-label">Repeat</label>
                         <input type="text" class="form-control" id="repeat" name="repeat" required>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-right">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="reset" class="btn btn-warning">Clear</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- Schedule Modal -->
+<div class="modal fade" id="add_schedule_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><b>Add Schedule</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{% url 'perform_add_schedule' %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" name="date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="time" class="form-label">Time</label>
+                        <input type="time" class="form-control" id="time" name="time" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <textarea class="form-control" rows="3" id="location" name="location"
+                                  required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="notes" class="form-label">Notes</label>
+                        <textarea class="form-control" rows="3" id="notes" name="notes"
+                                  required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="customer" class="form-label">Customer</label>
+                        <select id="customer" class="form-control" name="customer_id">
+                            {% for customer in customers %}
+                            <option value="{{ customer.main_id }}">{{ customer.first_name }} {{ customer.last_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="product" class="form-label">Product</label>
+                        <select id="product" class="form-control" name="product_id">
+                            {% for product in products %}
+                            <option value="{{ product.main_id }}">{{ product.product_title }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="session" class="form-label">Session</label>
+                        <select id="session" class="form-control" name="session_id">
+                            {% for session in sessions %}
+                            <option value="{{ session.main_id }}">{{ session.session_title }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select id="status" class="form-control" name="status">
+                            <option>Done</option>
+                            <option>Tentative</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-right">
@@ -213,13 +288,61 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <p>One fine body&hellip;</p>
-            </div>
-            <div class="modal-footer justify-content-right">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-success">Save</button>
-            </div>
+            <form action="{% url 'perform_add_sale' %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="sale_title" class="form-label">Sale Title</label>
+                        <input type="text" class="form-control" id="sale_title" name="sale_title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="sale_description" class="form-label">Sale Description</label>
+                        <textarea class="form-control" rows="3" id="sale_description" name="sale_description"
+                                  required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="sale_price" class="form-label">Sale Price</label>
+                        <input type="number" class="form-control" id="sale_price" name="sale_price" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="package_maturity" class="form-label">Package Maturity</label>
+                        <input type="text" class="form-control" id="package_maturity" name="package_maturity" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="no_of_sessions" class="form-label">Number of Sessions</label>
+                        <input type="number" class="form-control" id="no_of_sessions" name="no_of_sessions" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="session_frequency" class="form-label">Session Frequency</label>
+                        <input type="text" class="form-control" id="session_frequency" name="session_frequency" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="session_frequency_unit" class="form-label">Session Frequency Unit</label>
+                        <input type="text" class="form-control" id="session_frequency_unit" name="session_frequency_unit" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="customer" class="form-label">Customer</label>
+                        <select id="customer" class="form-control" name="customer_id">
+                            {% for customer in customers %}
+                            <option value="{{ customer.main_id }}">{{ customer.first_name }} {{ customer.last_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="product" class="form-label">Product</label>
+                        <select id="product" class="form-control" name="product_id">
+                            {% for product in products %}
+                            <option value="{{ product.main_id }}">{{ product.product_title }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-right">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="reset" class="btn btn-warning">Clear</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
         </div>
         <!-- /.modal-content -->
     </div>
@@ -236,13 +359,118 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <p>One fine body&hellip;</p>
+            <form action="{% url 'perform_add_payment' %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="payment_title" class="form-label">Payment Title</label>
+                        <input type="text" class="form-control" id="payment_title" name="payment_title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="payment_description" class="form-label">Payment Description</label>
+                        <textarea class="form-control" rows="3" id="payment_description" name="payment_description"
+                                  required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="payment_amount" class="form-label">Payment Amount</label>
+                        <input type="number" class="form-control" id="payment_amount" name="payment_amount" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="payment_method" class="form-label">Payment Method</label>
+                        <select id="payment_method" class="form-control" name="payment_method">
+                            <option>Cash</option>
+                            <option>Debit Card</option>
+                            <option>Credit Card</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="currency" class="form-label">Currency</label>
+                        <input type="text" class="form-control" id="currency" name="currency" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="customer" class="form-label">Customer</label>
+                        <select id="customer" class="form-control" name="customer_id">
+                            {% for customer in customers %}
+                            <option value="{{ customer.main_id }}">{{ customer.first_name }} {{ customer.last_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="sale" class="form-label">Sale</label>
+                        <select id="sale" class="form-control" name="sale_id">
+                            {% for sale in sales %}
+                            <option value="{{ sale.main_id }}">{{ sale.sale_title }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-right">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="reset" class="btn btn-warning">Clear</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<!-- Expense Modal -->
+<div class="modal fade" id="add_expense_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><b>Add Expense</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="modal-footer justify-content-right">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-success">Save</button>
-            </div>
+            <form action="{% url 'perform_add_expense' %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="expense_title" class="form-label">Expense Title</label>
+                        <input type="text" class="form-control" id="expense_title" name="expense_title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="expense_description" class="form-label">Expense Description</label>
+                        <textarea class="form-control" rows="3" id="expense_description" name="expense_description"
+                                  required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="expense_amount" class="form-label">Expense Amount</label>
+                        <input type="number" class="form-control" id="expense_amount" name="expense_amount" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="expense_allocation_flag" class="form-label">Expense Allocation Flag</label>
+                        <input type="text" class="form-control" id="expense_allocation_flag" name="expense_allocation_flag" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="expense_type" class="form-label">Expense Type</label>
+                        <input type="text" class="form-control" id="expense_type" name="expense_type" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="package_id" class="form-label">Package ID</label>
+                        <input type="text" class="form-control" id="package_id" name="package_id" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="customer" class="form-label">Customer</label>
+                        <select id="customer" class="form-control" name="customer_id">
+                            {% for customer in customers %}
+                            <option value="{{ customer.main_id }}">{{ customer.first_name }} {{ customer.last_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-right">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="reset" class="btn btn-warning">Clear</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
         </div>
         <!-- /.modal-content -->
     </div>

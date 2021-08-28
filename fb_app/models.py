@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Customer(models.Model):
     main_id = models.AutoField(primary_key=True)
@@ -27,6 +28,7 @@ class Customer(models.Model):
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
+
 class Product(models.Model):
     main_id = models.AutoField(primary_key=True)
     product_title = models.CharField(max_length=50)
@@ -37,6 +39,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.product_title
+
 
 class Session(models.Model):
     main_id = models.AutoField(primary_key=True)
@@ -50,10 +53,11 @@ class Session(models.Model):
     repeat = models.CharField(max_length=15)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
-    
+
     def __str__(self):
         return self.session_title
-        
+
+
 class Schedule(models.Model):
     main_id = models.AutoField(primary_key=True)
     date = models.DateField()
@@ -66,9 +70,10 @@ class Schedule(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.DO_NOTHING, default=True)
     session_id = models.ForeignKey(Session, on_delete=models.DO_NOTHING, default=True)
     status = models.CharField(max_length=40)
-    
+
     def __str__(self):
         return f'{self.session_id} {self.date} {self.time}'
+
 
 class Sale(models.Model):
     main_id = models.AutoField(primary_key=True)
@@ -87,6 +92,7 @@ class Sale(models.Model):
     def __str__(self):
         return self.sale_title
 
+
 class Expense(models.Model):
     main_id = models.AutoField(primary_key=True)
     expense_title = models.CharField(max_length=50)
@@ -99,6 +105,10 @@ class Expense(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.expense_title
+
+
 class Payment(models.Model):
     main_id = models.AutoField(primary_key=True)
     payment_title = models.CharField(max_length=50)
@@ -110,3 +120,8 @@ class Payment(models.Model):
     sale_id = models.ForeignKey(Sale, on_delete=models.DO_NOTHING, default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.payment_title
+
+

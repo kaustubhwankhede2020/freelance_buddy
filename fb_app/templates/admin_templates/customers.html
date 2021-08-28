@@ -1,83 +1,124 @@
-{% extends "admin_templates/base.html" %}
-{% load static %}
-{% block title %}Customers{% endblock %}
-{% block page_title %}Customers{% endblock %}
-{% block breadcrumb %}Customers{% endblock %}
-
-{% block content %}
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Recent Customers</h3>
-
-        <div class="card-tools">
-            <div class="input-group input-group-sm" style="width: 150px;">
-                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                    </button>
+{% extends "admin_templates/base.html" %} {% load static %} {% block title %}Customers{% endblock %} {% block page_title %}Customers{% endblock %} {% block breadcrumb %}Customers{% endblock %} {% block content %}
+<div class="row">
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="input-group">
+                    <input type="text" name="message" placeholder="Search for ....." class="form-control">
+                    <span class="input-group-append">
+                        <button type="button" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                    </span>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body table-responsive p-0">
-        <table class="table table-head-fixed text-nowrap">
-            <thead>
-                <!-- main_id,first_name,last_name,email,gender,age,mobile_no_1,mobile_no_2,mobile_no_3,city,state,country,address,profession,customer_source,description,additional_notes,bank_details,time_zone,created_at,updated_at -->
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Gender</th>
-                    <th>Age</th>
-                    <th>Mobile No 1</th>
-                    <th>Mobile No 2</th>
-                    <th>Mobile No 3</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Country</th>
-                    <th>Address</th>
-                    <th>Profession</th>
-                    <th>Customer Source</th>
-                    <th>Description</th>
-                    <th>Additional Notes</th>
-                    <th>Bank Details</th>
-                    <th>Time Zone</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- main_id,first_name,last_name,email,gender,age,mobile_no_1,mobile_no_2,mobile_no_3,city,state,country,address,profession,customer_source,description,additional_notes,bank_details,time_zone,created_at,updated_at -->
-                {% for customer in customers %}
-                <tr>
-                    <td>{{ customer.main_id  }}</td>
-                    <td>{{ customer.first_name  }}</td>
-                    <td>{{ customer.last_name  }}</td>
-                    <td>{{ customer.email  }}</td>
-                    <td>{{ customer.gender  }}</td>
-                    <td>{{ customer.age  }}</td>
-                    <td>{{ customer.mobile_no_1  }}</td>
-                    <td>{{ customer.mobile_no_2  }}</td>
-                    <td>{{ customer.mobile_no_3  }}</td>
-                    <td>{{ customer.city  }}</td>
-                    <td>{{ customer.state  }}</td>
-                    <td>{{ customer.country  }}</td>
-                    <td>{{ customer.address  }}</td>
-                    <td>{{ customer.profession  }}</td>
-                    <td>{{ customer.customer_source  }}</td>
-                    <td>{{ customer.description  }}</td>
-                    <td>{{ customer.additional_notes  }}</td>
-                    <td>{{ customer.bank_details  }}</td>
-                    <td>{{ customer.time_zone  }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    <!-- /.card-body -->
-</div>
-<!-- /.card -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-danger">
+                    <div class="card-header">
+                        <h3 class="card-title">Pie Chart</h3>
 
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chartjs-size-monitor">
+                            <div class="chartjs-size-monitor-expand">
+                                <div class=""></div>
+                            </div>
+                            <div class="chartjs-size-monitor-shrink">
+                                <div class=""></div>
+                            </div>
+                        </div>
+                        <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 486px;" width="486" height="250" class="chartjs-render-monitor"></canvas>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Recent Customers</h3>
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <!-- main_id,first_name,last_name,email,gender,age,mobile_no_1,mobile_no_2,mobile_no_3,city,state,country,address,profession,customer_source,description,additional_notes,bank_details,time_zone,created_at,updated_at -->
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Mobile No 1</th>
+                            <th>Mobile No 2</th>
+                            <th>Mobile No 3</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Country</th>
+                            <th>Address</th>
+                            <th>Profession</th>
+                            <th>Customer Source</th>
+                            <th>Description</th>
+                            <th>Additional Notes</th>
+                            <th>Bank Details</th>
+                            <th>Time Zone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- main_id,first_name,last_name,email,gender,age,mobile_no_1,mobile_no_2,mobile_no_3,city,state,country,address,profession,customer_source,description,additional_notes,bank_details,time_zone,created_at,updated_at -->
+                        {% for customer in customers %}
+                        <tr>
+                            <td>{{ customer.main_id }}</td>
+                            <td>{{ customer.first_name }}</td>
+                            <td>{{ customer.last_name }}</td>
+                            <td>{{ customer.email }}</td>
+                            <td>{{ customer.gender }}</td>
+                            <td>{{ customer.age }}</td>
+                            <td>{{ customer.mobile_no_1 }}</td>
+                            <td>{{ customer.mobile_no_2 }}</td>
+                            <td>{{ customer.mobile_no_3 }}</td>
+                            <td>{{ customer.city }}</td>
+                            <td>{{ customer.state }}</td>
+                            <td>{{ customer.country }}</td>
+                            <td>{{ customer.address }}</td>
+                            <td>{{ customer.profession }}</td>
+                            <td>{{ customer.customer_source }}</td>
+                            <td>{{ customer.description }}</td>
+                            <td>{{ customer.additional_notes }}</td>
+                            <td>{{ customer.bank_details }}</td>
+                            <td>{{ customer.time_zone }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>
 {% endblock content %}

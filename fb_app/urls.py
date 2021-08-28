@@ -10,4 +10,9 @@ urlpatterns = [
     path("calendar/", admin_views.render_calendar, name="render_calendar"),
     path("perform_add_customer", modal_views.perform_add_customer, name="perform_add_customer"),
     path("perform_add_product", modal_views.perform_add_product, name="perform_add_product"),
+    path("perform_add_session", modal_views.perform_add_session, name="perform_add_session"),
+    path("perform_add_schedule", modal_views.perform_add_schedule, name="perform_add_schedule"),
+    path("perform_add_sale", modal_views.perform_add_sale, name="perform_add_sale"),
+    path("perform_add_payment", modal_views.perform_add_payment, name="perform_add_payment"),
+    path("perform_add_expense", modal_views.perform_add_expense, name="perform_add_expense"),
 ]
