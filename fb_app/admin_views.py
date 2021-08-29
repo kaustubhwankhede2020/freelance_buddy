@@ -24,7 +24,7 @@ def render_customers(request):
     context = {
         "customers": customers,
     }
-    return render(request, 'admin_templates/customers.html', context)
+    return render(request, 'admin_templates/customers2.html', context)
 
 
 def render_products(request):
